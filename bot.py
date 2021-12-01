@@ -41,7 +41,6 @@ class GPTBot(commands.Cog):
         self.bot = bot
         self.__logger = logger.get_logger("openai_logger")
         self.__api = ApiHandler(self.__logger)
-        self.pics = ProfilePic(NICKNAMES)
         self.personality = "normal"
         self.language = "EN"
         self.authorized = False
