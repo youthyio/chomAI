@@ -178,16 +178,6 @@ class GPTBot(commands.Cog):
 
     @commands.command()
     @check_auth
-    async def song(self, ctx, *prompt: str):
-        user_id, user_name = user_parse(ctx)
-        usage = len(list("".join(prompt)))
-        if usage == 0:
-            raise EmptyPromptError
-        answer = await self.__api.song(song_name=prompt, language=self.language)
-        return await ctx.send(discord.utils.escape_mentions(answer))
-
-    @commands.command()
-    @check_auth
     async def foulmouth(self, ctx, *prompt: str):
         user_id, user_name = user_parse(ctx)
         usage = len(list("".join(prompt)))
@@ -247,7 +237,6 @@ class GPTBot(commands.Cog):
     async def hood(self, ctx, *prompt: str):
         await self.person_talks(ctx,prompt) 
 
-
     @commands.command()
     @check_auth
     @personality
@@ -298,7 +287,7 @@ class GPTBot(commands.Cog):
     async def passcode(self,ctx, *prompt:str):
         if "".join(prompt) == "{}".format(PASSCODE):
             self.authorized = not self.authorized
-        message = 'TIENES ACCESSO!' if self.authorized else "I won't say anything now. Talk to the hand yo."
+        message = 'TIENES ACESSO!' if self.authorized else "I won't say anything now. Talk to the hand yo."
         return await ctx.send(message)
 
 if __name__ == "__main__":
